@@ -8,11 +8,13 @@ import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import ProjectComments from './components/ProjectComments';
 import Project from './components/Project';
+import './App.css'; // Importer les styles globaux
+
 const App = () => {
   return (
-    <div className="App font-sans bg-gray-100 text-gray-900">
+    <div className="App">
       <Navbar />
-      <main className="pt-16"> {/* Ajout d'un padding supérieur pour éviter que le contenu soit masqué par la navbar */}
+      <main className="main-content"> {/* Contenu principal avec padding pour éviter d'être masqué par la navbar */}
         <Home />
         <About />
         <ProjectList />
