@@ -1,11 +1,13 @@
-import React from 'react';
-
-const About = () => (
-  <section id="about" className="about-section">
-    <h2>About Me</h2>
-    <p>Je suis développeur avec une passion pour créer des applications modernes...</p>
-    {/* Ajoute des images ou icônes de compétences */}
-  </section>
-);
+const About = () => {
+  return (
+      <section className="about">
+          <h2>À propos</h2>
+          <p>
+              Bonjour, je m'appelle Jean-Christophe Matti, je suis un étudiant dans le développement web et j'ai 26 ans.
+              Vous trouverez sur mon portfolio quelques projets que j'ai réalisés et que vous pourrez tester. Bonne visite !
+          </p>
+      </section>
+  );
+};
 
 export default About;

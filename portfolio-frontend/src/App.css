@@ -1,119 +1,149 @@
 /* App.css */
 
-/* Styles globaux */
+/* Global Styles */
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background-color: #f7f7f7; /* Couleur de fond claire */
-  color: #333; /* Couleur de texte standard */
-  animation: backgroundAnimation 10s infinite; /* Animation de fond */
+  background-color: #ff0000; /* Fond rouge */
+  color: #ffffff;
 }
 
-/* Animation de fond */
-@keyframes backgroundAnimation {
-  0% { background-color: #ff4757; }
-  50% { background-color: #ff6b81; }
-  100% { background-color: #ff4757; }
+.App {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
 }
 
-/* Style pour la navbar */
+/* Navbar Styles */
 .navbar {
-  background-color: #ff4757; /* Rouge vif */
-  padding: 1rem; /* Espacement */
+  background-color: #c20000; /* Couleur plus foncée pour la navbar */
+  padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.navbar a {
-  color: #ffffff; /* Couleur blanche pour le texte */
-  text-decoration: none;
-  margin: 0 1rem; /* Espacement entre les liens */
-  transition: color 0.3s; /* Transition pour les liens */
-}
-
-.navbar a:hover {
-  color: #ffeaa7; /* Couleur au survol */
-}
-
-/* Styles du footer */
-.footer {
-  background-color: #2f3542; /* Couleur sombre */
-  color: #ffffff; /* Couleur blanche pour le texte */
-  text-align: center;
-  padding: 1rem;
-}
-
-/* Style du main */
-main {
-  padding: 2rem;
-}
-
-/* Style pour les sections */
+/* Section Styles */
 section {
-  margin-bottom: 2rem; /* Espacement entre les sections */
+  margin: 20px 0;
 }
 
-/* Styles des titres */
-h1, h2, h3 {
-  font-weight: bold; /* Gras pour les titres */
-}
-
-/* Style de la zone des projets */
+/* Project List Styles */
 .project-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Grille responsive */
-  gap: 1.5rem; /* Espacement entre les projets */
+  display: flex;
+  overflow-x: auto; /* Permet le défilement horizontal pour le carrousel */
+  scroll-snap-type: x mandatory;
 }
 
-/* Styles des cartes de projet */
-.project-card {
-  background-color: #ffffff; /* Fond blanc */
-  border-radius: 10px; /* Coins arrondis */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombre douce */
-  padding: 1.5rem; /* Espacement interne */
-  transition: transform 0.2s; /* Transition pour l'effet de survol */
+.project {
+  min-width: 300px; /* Largeur minimale pour chaque projet */
+  margin: 0 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  scroll-snap-align: start;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.project-card:hover {
-  transform: translateY(-5px); /* Légère élévation au survol */
+.project:hover {
+  transform: scale(1.05); /* Effet d'agrandissement au survol */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-.project-card h2 {
-  margin: 0; /* Retire le margin par défaut */
-  font-size: 1.5rem; /* Taille de la police */
+/* GitHub Link Styles */
+.project a {
+  color: #ffcc00; /* Couleur visible pour les liens GitHub */
+  text-decoration: underline;
+  transition: color 0.3s;
 }
 
-.project-card p {
-  margin: 0.5rem 0 1rem; /* Espacement autour du paragraphe */
+.project a:hover {
+  color: #ffd700; /* Changement de couleur au survol */
 }
 
-/* Lien GitHub */
-.project-card a {
-  display: inline-block; /* Pour avoir un bon padding */
-  background-color: #ff4757; /* Couleur du bouton */
-  color: #ffffff; /* Couleur blanche pour le texte */
-  padding: 0.5rem 1rem; /* Espacement interne */
-  border-radius: 5px; /* Coins arrondis */
-  text-decoration: none; /* Retire le soulignement */
-  transition: background-color 0.3s; /* Transition pour la couleur de fond */
+/* About Section Styles */
+.about {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
 }
 
-.project-card a:hover {
-  background-color: #e84118; /* Couleur au survol */
+/* Contact Form Styles */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espace entre les champs */
+  background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 400px; /* Largeur maximale du formulaire */
+  margin: auto; /* Centrer le formulaire */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ombre pour le formulaire */
 }
 
-/* Media queries pour les petits écrans */
-@media (max-width: 600px) {
-  .navbar {
-      flex-direction: column; /* Empile les éléments */
-  }
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ffcc00; /* Bordure dorée */
+  background-color: #fff; /* Fond blanc pour les champs */
+  transition: border-color 0.3s; /* Transition pour la bordure */
+}
 
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ffd700; /* Bordure dorée au focus */
+  outline: none; /* Retirer l'outline par défaut */
+}
+
+.contact-form button {
+  background-color: #ffcc00; /* Couleur du bouton */
+  color: #000;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #ffd700; /* Changement de couleur au survol du bouton */
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
   .project-list {
-      grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
+    flex-wrap: wrap; /* Permet de passer à une nouvelle ligne si l'écran est trop petit */
   }
 
-  .project-card {
-      padding: 1rem; /* Réduire le padding sur petits écrans */
+  .project {
+    flex: 1 1 calc(50% - 20px); /* Deux projets par ligne */
+    margin: 10px; /* Marge uniforme */
+  }
+}
+
+@media (max-width: 768px) {
+  .project {
+    flex: 1 1 calc(100% - 20px); /* Un projet par ligne sur les écrans plus petits */
+  }
+
+  .contact-form {
+    width: 90%; /* Formulaire plus large sur les petits écrans */
+  }
+
+  .App {
+    padding: 10px; /* Moins de padding pour les écrans plus petits */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px; /* Réduire la taille de police pour les très petits écrans */
+  }
+
+  .navbar {
+    flex-direction: column; /* Navbar verticale sur petits écrans */
   }
 }

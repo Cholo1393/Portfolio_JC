@@ -1,4 +1,3 @@
-// src/components/ProjectList.js
 import React, { useState, useEffect } from 'react';
 import { getProjects } from '../services/api';
 
@@ -19,18 +18,15 @@ const ProjectList = () => {
     }, []);
 
     return (
-        <section>
-            <h2>Mes Projets</h2>
-            <div className="project-list">
-                {projects.map(project => (
-                    <div className="project-card" key={project._id}>
-                        <h3>{project.title}</h3>
-                        <p>{project.description}</p>
-                        <a href={project.githubLink} target="_blank" rel="noopener noreferrer">Voir sur GitHub</a>
-                    </div>
-                ))}
-            </div>
-        </section>
+        <div className="project-list">
+            {projects.map(project => (
+                <div key={project._id} className="project">
+                    <h2>{project.title}</h2>
+                    <p>{project.description}</p>
+                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer">Voir sur GitHub</a>
+                </div>
+            ))}
+        </div>
     );
 };
 
