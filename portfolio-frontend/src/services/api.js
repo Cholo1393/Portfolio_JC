@@ -2,8 +2,9 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://portfolio-backend-jc.fly.dev', // URL de votre backend déployé
+  baseURL: 'https://portfolio-backend-jc.fly.dev/api',
 });
+
 
 export const registerUser = async (userData) => {
   return await api.post('/auth/register', userData);

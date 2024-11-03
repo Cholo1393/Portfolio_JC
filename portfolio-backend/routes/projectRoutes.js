@@ -1,9 +1,12 @@
+// routes/projectRoutes.js
 const express = require('express');
-const { getProjects } = require('../controllers/projectController');
-
 const router = express.Router();
+const projectController = require('../controllers/projectController');
 
-// Route pour obtenir tous les projets
-router.get('/', getProjects);
+// GET tous les projets
+router.get('/', projectController.getAllProjects);
+
+// POST un nouveau projet
+router.post('/', projectController.createProject);
 
 module.exports = router;

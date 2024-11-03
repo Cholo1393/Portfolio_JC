@@ -10,14 +10,14 @@ const authRoutes = require('./routes/authRoutes');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware pour CORS
 const corsOptions = {
-    origin: 'https://mattidev.netlify.app', // URL de votre frontend
+    origin: 'https://mattidev.netlify.app', // Assurez-vous que cela correspond à votre URL de frontend
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
 };
 
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); // Cela doit être avant l'utilisation des routes
+
 
 // Middleware pour traiter le JSON
 app.use(express.json());
