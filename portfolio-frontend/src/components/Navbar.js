@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-
+import '../style.css'
 const Navbar = () => {
   // State to manage the navbar's visibility
   const [nav, setNav] = useState(false);

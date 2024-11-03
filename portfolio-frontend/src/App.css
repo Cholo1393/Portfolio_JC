@@ -1,3 +1,234 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* App.css */
+
+/* Global Styles */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #ff0000; /* Fond rouge */
+  color: #ffffff;
+}
+
+.App {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #c20000; /* Couleur plus foncée pour la navbar */
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed; /* Fixer la navbar en haut de l'écran */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10; /* S'assurer que la navbar reste au-dessus du contenu */
+  transition: background-color 0.3s; /* Transition pour le changement de couleur */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Prendre toute la largeur disponible */
+}
+
+.navbar-brand {
+  cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+}
+
+/* Menu Hamburger Styles */
+.menu-btn {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+.nav-open .line--1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-open .line--2 {
+  opacity: 0; /* Cacher la ligne du milieu */
+}
+
+.nav-open .line--3 {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Navbar Links Styles */
+.navbar-links {
+  display: flex; /* Afficher les liens en ligne par défaut */
+  gap: 20px; /* Espace entre les liens */
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none; /* Enlever le soulignement des liens */
+  padding: 5px 10px; /* Padding autour des liens */
+  transition: color 0.3s; /* Transition pour le changement de couleur */
+}
+
+.navbar-links a:hover {
+  color: #ffcc00; /* Couleur dorée au survol */
+}
+
+/* Afficher les liens en colonne lorsque le menu est ouvert */
+.nav-open .navbar-links {
+  flex-direction: column; /* Empiler les liens */
+  position: absolute; /* Position absolue pour le menu */
+  top: 100%; /* Juste en dessous de la navbar */
+  left: 0;
+  right: 0;
+  background-color: #c20000; /* Couleur de fond du menu */
+  padding: 10px 0; /* Padding vertical */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section Styles */
+section {
+  margin: 20px 0;
+}
+
+/* Project List Styles */
+.project-list {
+  display: flex;
+  overflow-x: auto; /* Permet le défilement horizontal pour le carrousel */
+  scroll-snap-type: x mandatory;
+}
+
+.project {
+  min-width: 300px; /* Largeur minimale pour chaque projet */
+  margin: 0 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  scroll-snap-align: start;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project:hover {
+  transform: scale(1.05); /* Effet d'agrandissement au survol */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* GitHub Link Styles */
+.project a {
+  color: #ffcc00; /* Couleur visible pour les liens GitHub */
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.project a:hover {
+  color: #ffd700; /* Changement de couleur au survol */
+}
+
+/* About Section Styles */
+.about {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Contact Form Styles */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espace entre les champs */
+  background-color: rgba(255, 255, 255, 0.1); /* Fond semi-transparent */
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 400px; /* Largeur maximale du formulaire */
+  margin: auto; /* Centrer le formulaire */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ombre pour le formulaire */
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ffcc00; /* Bordure dorée */
+  background-color: #fff; /* Fond blanc pour les champs */
+  transition: border-color 0.3s; /* Transition pour la bordure */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ffd700; /* Bordure dorée au focus */
+  outline: none; /* Retirer l'outline par défaut */
+}
+
+.contact-form button {
+  background-color: #ffcc00; /* Couleur du bouton */
+  color: #000;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #ffd700; /* Changement de couleur au survol du bouton */
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .project-list {
+    flex-wrap: wrap; /* Permet de passer à une nouvelle ligne si l'écran est trop petit */
+  }
+
+  .project {
+    flex: 1 1 calc(50% - 20px); /* Deux projets par ligne */
+    margin: 10px; /* Marge uniforme */
+  }
+}
+
+@media (max-width: 768px) {
+  .project {
+    flex: 1 1 calc(100% - 20px); /* Un projet par ligne sur les écrans plus petits */
+  }
+
+  .contact-form {
+    width: 90%; /* Formulaire plus large sur les petits écrans */
+  }
+
+  .App {
+    padding: 10px; /* Moins de padding pour les écrans plus petits */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px; /* Réduire la taille de police pour les très petits écrans */
+  }
+
+  .navbar {
+    flex-direction: column; /* Navbar verticale sur petits écrans */
+  }
+
+  .navbar-links {
+    display: none; /* Cacher les liens par défaut sur petits écrans */
+  }
+
+  .nav-open .navbar-links {
+    display: flex; /* Afficher les liens lorsque le menu est ouvert */
+  }
+}
