@@ -21,6 +21,83 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed; /* Fixer la navbar en haut de l'écran */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10; /* S'assurer que la navbar reste au-dessus du contenu */
+  transition: background-color 0.3s; /* Transition pour le changement de couleur */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Prendre toute la largeur disponible */
+}
+
+.navbar-brand {
+  cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+}
+
+/* Menu Hamburger Styles */
+.menu-btn {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  margin: 5px 0;
+  transition: all 0.3s ease;
+}
+
+.nav-open .line--1 {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-open .line--2 {
+  opacity: 0; /* Cacher la ligne du milieu */
+}
+
+.nav-open .line--3 {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Navbar Links Styles */
+.navbar-links {
+  display: flex; /* Afficher les liens en ligne par défaut */
+  gap: 20px; /* Espace entre les liens */
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none; /* Enlever le soulignement des liens */
+  padding: 5px 10px; /* Padding autour des liens */
+  transition: color 0.3s; /* Transition pour le changement de couleur */
+}
+
+.navbar-links a:hover {
+  color: #ffcc00; /* Couleur dorée au survol */
+}
+
+/* Afficher les liens en colonne lorsque le menu est ouvert */
+.nav-open .navbar-links {
+  flex-direction: column; /* Empiler les liens */
+  position: absolute; /* Position absolue pour le menu */
+  top: 100%; /* Juste en dessous de la navbar */
+  left: 0;
+  right: 0;
+  background-color: #c20000; /* Couleur de fond du menu */
+  padding: 10px 0; /* Padding vertical */
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Section Styles */
@@ -145,5 +222,13 @@ section {
 
   .navbar {
     flex-direction: column; /* Navbar verticale sur petits écrans */
+  }
+
+  .navbar-links {
+    display: none; /* Cacher les liens par défaut sur petits écrans */
+  }
+
+  .nav-open .navbar-links {
+    display: flex; /* Afficher les liens lorsque le menu est ouvert */
   }
 }
