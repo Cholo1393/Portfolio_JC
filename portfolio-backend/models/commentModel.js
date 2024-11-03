@@ -14,6 +14,8 @@ const commentSchema = new mongoose.Schema({
     comment: {
         type: String,
         required: true,
+        minlength: 1,
+        maxlength: 500, // Limite la longueur du commentaire
     },
 }, { timestamps: true });
 

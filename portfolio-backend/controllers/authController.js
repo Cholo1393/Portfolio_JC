@@ -9,7 +9,7 @@ exports.registerUser = async (req, res) => {
         res.status(201).json({ message: 'Utilisateur créé avec succès' });
     } catch (error) {
         console.error("Erreur lors de l'inscription:", error);
-        res.status(400).json({ message: 'Erreur lors de l\'inscription', error });
+        res.status(400).json({ message: 'Erreur lors de l\'inscription' });
     }
 };
 
@@ -24,6 +24,6 @@ exports.loginUser = async (req, res) => {
         res.json({ token });
     } catch (error) {
         console.error("Erreur lors de la connexion:", error);
-        res.status(500).json({ message: 'Erreur lors de la connexion', error });
+        res.status(500).json({ message: 'Erreur lors de la connexion' });
     }
 };

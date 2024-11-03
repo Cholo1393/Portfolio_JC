@@ -12,7 +12,7 @@ exports.addComment = async (req, res) => {
         res.status(201).json({ message: 'Commentaire ajouté avec succès', comment: newComment });
     } catch (error) {
         console.error("Erreur lors de l'ajout du commentaire:", error);
-        res.status(500).json({ message: 'Erreur lors de l\'ajout du commentaire', error });
+        res.status(500).json({ message: 'Erreur lors de l\'ajout du commentaire' });
     }
 };
 
@@ -22,6 +22,6 @@ exports.getComments = async (req, res) => {
         res.json(comments);
     } catch (error) {
         console.error("Erreur lors de la récupération des commentaires:", error);
-        res.status(500).json({ message: 'Erreur lors de la récupération des commentaires', error });
+        res.status(500).json({ message: 'Erreur lors de la récupération des commentaires' });
     }
 };

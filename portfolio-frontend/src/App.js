@@ -1,26 +1,29 @@
-// App.js
+// src/App.js
 import React from 'react';
-// import api from './services/api.js'; // Supprimez ou commentez cette ligne
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import ProjectList from './components/ProjectList';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
-import ProjectComments from './components/ProjectComments';
-import './App.css';
+import Project from './components/Project'; // Importez le composant Project
 
 const App = () => {
   return (
-    <div className="App">
-      <Navbar />
-      <Home />
-      <About />
-      <ProjectList />
-      <ProjectComments/>
-      <ContactForm />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/projects" exact component={ProjectList} />
+          <Route path="/projects/:projectId" component={Project} /> {/* Ajoutez cette ligne pour la route du projet */}
+          <Route path="/contact" component={ContactForm} />
+        </Switch>
+        <Footer />
+      </div>
+    </Router>
   );
 };
 
