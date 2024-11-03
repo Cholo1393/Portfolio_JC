@@ -1,5 +1,5 @@
 // controllers/projectController.js
-const Project = require('../models/Project');
+const Project = require('../models/projectModel');
 
 // Récupérer tous les projets
 exports.getAllProjects = async (req, res) => {
