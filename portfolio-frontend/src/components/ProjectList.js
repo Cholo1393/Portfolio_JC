@@ -1,5 +1,5 @@
 // src/components/ProjectList.js
-import React, { useState, useEffect } from 'react'; // Ajoutez cette ligne pour importer useState et useEffect
+import React, { useState, useEffect } from 'react'; 
 import { getProjects } from '../services/api';
 
 const ProjectList = () => {
@@ -19,12 +19,12 @@ const ProjectList = () => {
     }, []);
 
     return (
-        <div>
+        <div className="project-list">
             {projects.map(project => (
-                <div key={project._id}>
+                <div className="project-card" key={project._id}>
                     <h2>{project.title}</h2>
-                    <p>{project.description}</p>
-                    <a href={project.githubLink}>GitHub</a>
+                    <p className="project-description">{project.description}</p>
+                    <a className="project-link" href={project.githubLink} target="_blank" rel="noopener noreferrer">Voir sur GitHub</a>
                 </div>
             ))}
         </div>

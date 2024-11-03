@@ -1,138 +1,53 @@
-/* Global Styles */
-* {
+/* App.css */
+
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa; /* Couleur de fond douce */
 }
 
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background-color: #333;
+.App {
+  max-width: 1200px; /* Largeur maximale pour un meilleur affichage */
+  margin: 0 auto; /* Centrer le contenu */
+  padding: 20px; /* Ajout de padding général */
 }
 
-.navbar-logo {
-  color: #fff;
-  font-size: 1.5em;
-}
-
-.navbar-links {
-  list-style: none;
-}
-
-.navbar-links li {
-  display: inline;
-  margin: 0 10px;
-}
-
-.navbar-links a {
-  color: #fff;
-  text-decoration: none;
-}
-
-/* Home */
-.home {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background: #f7f7f7;
-}
-
-.home-content {
-  text-align: center;
-}
-
-.home h1 {
-  font-size: 3em;
-  color: #333;
-}
-
-.home p {
-  font-size: 1.5em;
-  margin-bottom: 20px;
-}
-
-.home-button {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  text-decoration: none;
-}
-
-/* About */
-.about {
-  padding: 60px;
-  background: #fff;
-  text-align: center;
-}
-
-.about h2 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
-}
-
-.about p {
-  font-size: 1.2em;
-}
-
-/* Projects */
-.projects {
-  padding: 60px;
-  background: #f7f7f7;
-  text-align: center;
-}
-
-.projects h2 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
+h2 {
+  font-size: 1.5rem; /* Taille du titre des projets */
+  color: #343a40; /* Couleur des titres */
+  margin-bottom: 10px; /* Espacement en dessous des titres */
 }
 
 .project-card {
-  background: #fff;
-  margin: 10px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: white; /* Couleur de fond des cartes de projet */
+  border: 1px solid #dee2e6; /* Bordure douce */
+  border-radius: 8px; /* Coins arrondis */
+  padding: 20px; /* Espacement interne */
+  margin: 20px 0; /* Espacement entre les cartes */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre pour un effet de profondeur */
+  transition: transform 0.2s; /* Transition pour un effet de survol */
 }
 
-/* Contact */
-.contact {
-  padding: 60px;
-  background: #fff;
-  text-align: center;
+.project-card:hover {
+  transform: translateY(-5px); /* Effet de levée au survol */
 }
 
-.contact h2 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
+.project-description {
+  font-size: 1rem; /* Taille de la description */
+  color: #6c757d; /* Couleur de la description */
+  margin-bottom: 15px; /* Espacement en dessous de la description */
 }
 
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.project-link {
+  display: inline-block; /* Pour styliser le lien comme un bouton */
+  background-color: #007bff; /* Couleur du bouton */
+  color: white; /* Couleur du texte du bouton */
+  padding: 10px 15px; /* Espacement interne du bouton */
+  border-radius: 5px; /* Coins arrondis */
+  text-decoration: none; /* Supprimer le soulignement */
+  transition: background-color 0.3s; /* Transition pour le changement de couleur */
 }
 
-.contact-form button {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  padding: 20px;
-  background: #333;
-  color: #fff;
+.project-link:hover {
+  background-color: #0056b3; /* Couleur au survol */
 }
