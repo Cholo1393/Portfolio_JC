@@ -5,7 +5,7 @@ import { getComments, postComment } from '../services/api';
 const ProjectComments = ({ projectId }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
-  const isAuthenticated = !!localStorage.getItem('token'); // On peut garder cette ligne pour vérifier l'authentification
+  const isAuthenticated = !!localStorage.getItem('token'); // Vérifier si l'utilisateur est authentifié
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -39,29 +39,35 @@ const ProjectComments = ({ projectId }) => {
   };
 
   return (
-    <div className="comments-section p-4 bg-gray-100 rounded-lg shadow-md">
-      <h2 className="text-xl font-semibold mb-2">Commentaires</h2>
-      <div className="comments-list mb-4">
+    <div className="comments-section p-4 bg-white rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 max-w-xl mx-auto">
+      <h2 className="text-2xl font-semibold mb-4 animate-bounce text-center">Commentaires</h2>
+      <div className="comments-list mb-4 space-y-2">
         {comments.map((c, index) => (
-          <div key={index} className="comment-item p-2 border-b border-gray-300">
-            <p><strong>{c.userId.username}</strong>: {c.comment}</p>
+          <div key={index} className="comment-item p-3 bg-gray-100 rounded-md shadow-sm transition transform hover:shadow-lg hover:bg-gray-200">
+            <p className="font-medium"><strong>{c.userId.username}</strong>: {c.comment}</p>
           </div>
         ))}
       </div>
 
       <form onSubmit={handleCommentSubmit} className="comment-form">
-        <textarea
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-          placeholder="Ajoutez votre commentaire..."
-          rows="4"
-          required
-          className="comment-input w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-        />
-        {error && <p className="error text-red-500">{error}</p>}
-        <button type="submit" disabled={!isAuthenticated} className={`mt-2 p-2 rounded-md text-white ${isAuthenticated ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-400 cursor-not-allowed'}`}>
-          {isAuthenticated ? "Commenter" : "Connexion requise"}
-        </button>
+        {isAuthenticated ? (
+          <>
+            <textarea
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              placeholder="Ajoutez votre commentaire..."
+              rows="4"
+              required
+              className="comment-input w-full p-2 mb-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 resize-none"
+            />
+            {error && <p className="error text-red-500 mb-2">{error}</p>}
+            <button type="submit" className="mt-2 p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200">
+              Commenter
+            </button>
+          </>
+        ) : (
+          <p className="text-red-500 mb-2 text-center">Veuillez vous connecter pour commenter.</p>
+        )}
       </form>
     </div>
   );
