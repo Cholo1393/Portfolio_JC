@@ -7,6 +7,7 @@ import About from './components/About';
 import ProjectList from './components/ProjectList';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
+import ProjectComments from './components/ProjectComments';
 import './App.css';
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
       <Home />
       <About />
       <ProjectList />
+      <ProjectComments/>
       <ContactForm />
       <Footer />
     </div>

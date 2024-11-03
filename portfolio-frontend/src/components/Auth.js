@@ -28,13 +28,15 @@ const Auth = () => {
   };
 
   return (
-    <form onSubmit={handleLogin}>
+    <form onSubmit={handleLogin} className="bg-white shadow-md rounded-lg p-6 max-w-md mx-auto">
+      <h2 className="text-2xl font-bold mb-4">Se connecter</h2>
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
         required
+        className="w-full p-2 border border-gray-300 rounded mb-4"
       />
       <input
         type="password"
@@ -42,9 +44,12 @@ const Auth = () => {
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Mot de passe"
         required
+        className="w-full p-2 border border-gray-300 rounded mb-4"
       />
-      <button type="submit">Se connecter</button>
-      {error && <p>{error}</p>}
+      <button type="submit" className="w-full bg-primary text-white py-2 rounded hover:bg-secondary">
+        Se connecter
+      </button>
+      {error && <p className="text-red-500">{error}</p>}
     </form>
   );
 };
