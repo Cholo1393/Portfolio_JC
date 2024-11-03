@@ -1,28 +1,27 @@
+// src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import ProjectList from './components/ProjectList';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
+import ProjectComments from './components/ProjectComments';
 import Project from './components/Project';
-
 const App = () => {
   return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<ProjectList />} />
-          <Route path="/projects/:projectId" element={<Project />} />
-          <Route path="/contact" element={<ContactForm />} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <div className="App font-sans bg-gray-100 text-gray-900">
+      <Navbar />
+      <main className="pt-16"> {/* Ajout d'un padding supérieur pour éviter que le contenu soit masqué par la navbar */}
+        <Home />
+        <About />
+        <ProjectList />
+        <Project />
+        <ProjectComments />
+        <ContactForm />
+      </main>
+      <Footer />
+    </div>
   );
 };
 
