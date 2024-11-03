@@ -1,3 +1,5 @@
+// src/components/ProjectList.js
+import React, { useState, useEffect } from 'react'; // Ajoutez cette ligne pour importer useState et useEffect
 import { getProjects } from '../services/api';
 
 const ProjectList = () => {
@@ -7,7 +9,7 @@ const ProjectList = () => {
         const fetchProjects = async () => {
             try {
                 const response = await getProjects();
-                setProjects(response.data); // Assurez-vous d'utiliser `response.data`
+                setProjects(response.data);
             } catch (error) {
                 console.error("Erreur lors de la récupération des projets:", error);
             }
