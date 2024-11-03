@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getComments, getProject } from '../services/api'; // Mettez à jour votre API pour obtenir les détails du projet
+import ProjectComments from './ProjectComments'; // Assurez-vous que le chemin est correct
 
 const Project = () => {
     const { projectId } = useParams();
