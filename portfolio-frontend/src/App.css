@@ -1,87 +1,119 @@
-/* src/App.css */
+/* App.css */
 
-/* Style général */
+/* Styles globaux */
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7; /* Couleur de fond claire */
+  color: #333; /* Couleur de texte standard */
 }
 
-/* Fond animé */
-.carousel-container {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(45deg, rgba(255, 0, 0, 0.7), rgba(255, 102, 102, 0.7));
-  animation: backgroundAnimation 5s ease infinite;
-  padding: 20px; /* Ajout d'un padding pour un espacement intérieur */
-}
-
-@keyframes backgroundAnimation {
-  0% { background-color: rgba(255, 0, 0, 0.7); }
-  50% { background-color: rgba(255, 102, 102, 0.7); }
-  100% { background-color: rgba(255, 0, 0, 0.7); }
-}
-
-/* Style du carrousel */
-.carousel {
+/* Style pour la navbar */
+.navbar {
+  background-color: #ff4757; /* Rouge vif */
+  padding: 1rem; /* Espacement */
   display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 20px;
-  gap: 20px; /* Espace entre les cartes */
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Styles pour les cartes de projet */
+.navbar a {
+  color: #ffffff; /* Couleur blanche pour le texte */
+  text-decoration: none;
+  margin: 0 1rem; /* Espacement entre les liens */
+  transition: color 0.3s; /* Transition pour les liens */
+}
+
+.navbar a:hover {
+  color: #ffeaa7; /* Couleur au survol */
+}
+
+/* Styles du footer */
+.footer {
+  background-color: #2f3542; /* Couleur sombre */
+  color: #ffffff; /* Couleur blanche pour le texte */
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Style du main */
+main {
+  padding: 2rem;
+}
+
+/* Style pour les sections */
+section {
+  margin-bottom: 2rem; /* Espacement entre les sections */
+}
+
+/* Styles des titres */
+h1, h2, h3 {
+  font-weight: bold; /* Gras pour les titres */
+}
+
+/* Style de la zone des projets */
+.project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Grille responsive */
+  gap: 1.5rem; /* Espacement entre les projets */
+}
+/* Styles des cartes de projet */
 .project-card {
-  flex: 0 0 auto; /* Permet de garder une largeur fixe */
-  min-width: 300px; /* Largeur minimum de chaque carte de projet */
-  max-width: 90%; /* Limite la largeur à 90% de l'écran pour les petits écrans */
-  margin: 0 auto; /* Centre la carte horizontalement */
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  scroll-snap-align: start;
-  transition: transform 0.2s ease;
+  background-color: #ffffff; /* Fond blanc */
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  padding: 1.5rem; /* Espacement interne */
+  transition: transform 0.2s; /* Transition pour l'effet de survol */
 }
 
 .project-card:hover {
-  transform: scale(1.05); /* Agrandir légèrement au survol */
+  transform: translateY(-5px); /* Légère élévation au survol */
 }
 
 .project-card h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  margin: 0; /* Retire le margin par défaut */
+  font-size: 1.5rem; /* Taille de la police */
 }
 
 .project-card p {
-  font-size: 1rem;
-  color: #333;
+  margin: 0.5rem 0 1rem; /* Espacement autour du paragraphe */
 }
 
-/* Styles pour les liens */
-.github-link {
-  display: inline-block;
-  margin-top: 10px;
-  color: white;
-  background: red;
-  padding: 10px 15px;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: background 0.3s ease;
+/* Lien GitHub */
+.project-card a {
+  display: inline-block; /* Pour avoir un bon padding */
+  background-color: #ff4757; /* Couleur du bouton */
+  color: #ffffff; /* Couleur blanche pour le texte */
+  padding: 0.5rem 1rem; /* Espacement interne */
+  border-radius: 5px; /* Coins arrondis */
+  text-decoration: none; /* Retire le soulignement */
+  transition: background-color 0.3s; /* Transition pour la couleur de fond */
 }
 
-.github-link:hover {
-  background: darkred; /* Couleur au survol */
+.project-card a:hover {
+  background-color: #e84118; /* Couleur au survol */
+}
+@keyframes backgroundAnimation {
+  0% { background-color: #ff4757; }
+  50% { background-color: #ff6b81; }
+  100% { background-color: #ff4757; }
 }
 
-/* Responsivité */
+/* Appliquer l'animation au corps */
+body {
+  animation: backgroundAnimation 10s infinite; /* Animation de 10 secondes en boucle */
+}
+/* Media queries pour les petits écrans */
 @media (max-width: 600px) {
-  .project-card {
-      min-width: 90%; /* Permet à la carte de s'étendre à 90% de l'écran */
+  .navbar {
+      flex-direction: column; /* Empile les éléments */
   }
 
-  .carousel {
-      flex-direction: column; /* Change la direction en colonne sur les petits écrans */
-      align-items: center; /* Centre les cartes */
+  .project-list {
+      grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
+  }
+
+  .project-card {
+      padding: 1rem; /* Réduire le padding sur petits écrans */
   }
 }
