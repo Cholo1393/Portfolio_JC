@@ -1,5 +1,5 @@
 // src/components/ProjectList.js
-import React, { useState, useEffect } from 'react'; 
+import React, { useState, useEffect } from 'react';
 import { getProjects } from '../services/api';
 
 const ProjectList = () => {
@@ -19,14 +19,16 @@ const ProjectList = () => {
     }, []);
 
     return (
-        <div className="project-list">
-            {projects.map(project => (
-                <div className="project-card" key={project._id}>
-                    <h2>{project.title}</h2>
-                    <p className="project-description">{project.description}</p>
-                    <a className="project-link" href={project.githubLink} target="_blank" rel="noopener noreferrer">Voir sur GitHub</a>
-                </div>
-            ))}
+        <div className="carousel-container">
+            <div className="carousel">
+                {projects.map(project => (
+                    <div key={project._id} className="project-card">
+                        <h2>{project.title}</h2>
+                        <p>{project.description}</p>
+                        <a href={project.githubLink} className="github-link">GitHub</a>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
