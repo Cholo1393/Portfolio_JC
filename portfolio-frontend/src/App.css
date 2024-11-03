@@ -6,6 +6,14 @@ body {
   font-family: 'Arial', sans-serif;
   background-color: #f7f7f7; /* Couleur de fond claire */
   color: #333; /* Couleur de texte standard */
+  animation: backgroundAnimation 10s infinite; /* Animation de fond */
+}
+
+/* Animation de fond */
+@keyframes backgroundAnimation {
+  0% { background-color: #ff4757; }
+  50% { background-color: #ff6b81; }
+  100% { background-color: #ff4757; }
 }
 
 /* Style pour la navbar */
@@ -57,6 +65,7 @@ h1, h2, h3 {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Grille responsive */
   gap: 1.5rem; /* Espacement entre les projets */
 }
+
 /* Styles des cartes de projet */
 .project-card {
   background-color: #ffffff; /* Fond blanc */
@@ -93,16 +102,7 @@ h1, h2, h3 {
 .project-card a:hover {
   background-color: #e84118; /* Couleur au survol */
 }
-@keyframes backgroundAnimation {
-  0% { background-color: #ff4757; }
-  50% { background-color: #ff6b81; }
-  100% { background-color: #ff4757; }
-}
 
-/* Appliquer l'animation au corps */
-body {
-  animation: backgroundAnimation 10s infinite; /* Animation de 10 secondes en boucle */
-}
 /* Media queries pour les petits écrans */
 @media (max-width: 600px) {
   .navbar {
