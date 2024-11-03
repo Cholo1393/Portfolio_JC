@@ -40,8 +40,8 @@ export const contactForm = async (contactData) => {
   return await api.post('/contact', contactData);
 };
 // src/services/api.js
-export const getProject = async (projectId) => {
-  return await api.get(`/projects/${projectId}`); // Mettez à jour l'URL avec votre backend
-};
+// export const getProject = async (projectId) => {
+//   return await api.get(`/projects/${projectId}`); // Mettez à jour l'URL avec votre backend
+// };
 
 export default api;
