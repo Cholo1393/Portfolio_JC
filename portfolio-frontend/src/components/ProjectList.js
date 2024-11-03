@@ -1,43 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import { getProjects } from '../services/api';
 
 const ProjectList = () => {
-    const [projects, setProjects] = useState([]);
-    const [error, setError] = useState(null);
+  const [projects, setProjects] = useState([]);
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchProjects = async () => {
-            try {
-                const response = await axios.get('http://localhost:5000/api/projects'); // Assurez-vous que l'URL est correcte
-                setProjects(response.data);
-            } catch (err) {
-                setError(err);
-                console.error('Erreur de récupération des projets:', err);
-            }
-        };
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await getProjects();
+        setProjects(response.data); // Assurez-vous que les données sont dans le format attendu
+      } catch (err) {
+        setError('Erreur lors de la récupération des projets');
+        console.error(err);
+      }
+    };
 
-        fetchProjects();
-    }, []);
+    fetchProjects();
+  }, []);
 
-    if (error) {
-        return <div>Erreur de récupération des projets: {error.message}</div>;
-    }
-
-    return (
-        <div>
-            <h2>Liste des Projets</h2>
-            <ul>
-                {projects.map(project => (
-                    <li key={project._id}>
-                        <h3>{project.title}</h3>
-                        <p>{project.description}</p>
-                        <a href={project.githubLink} target="_blank" rel="noopener noreferrer">Voir le projet sur GitHub</a>
-                        {project.image && <img src={project.image} alt={project.title} />}
-                    </li>
-                ))}
-            </ul>
+  return (
+    <div>
+      {error && <p>{error}</p>}
+      {projects.map(project => (
+        <div key={project._id}>
+          <h3>{project.title}</h3>
+          <p>{project.description}</p>
         </div>
-    );
+      ))}
+    </div>
+  );
 };
 
 export default ProjectList;
