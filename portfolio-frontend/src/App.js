@@ -1,6 +1,6 @@
 // src/App.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
@@ -14,13 +14,13 @@ const App = () => {
     <Router>
       <div className="App">
         <Navbar />
-        <Switch>
+        <Routes>
           <Route path="/" exact component={Home} />
           <Route path="/about" component={About} />
           <Route path="/projects" exact component={ProjectList} />
           <Route path="/projects/:projectId" component={Project} /> {/* Ajoutez cette ligne pour la route du projet */}
           <Route path="/contact" component={ContactForm} />
-        </Switch>
+        </Routes>
         <Footer />
       </div>
     </Router>
