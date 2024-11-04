@@ -1,27 +1,21 @@
+// models/Project.js
 const mongoose = require('mongoose');
 
-// Définition du schéma pour les projets
 const projectSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: true, // Le titre est requis
+        required: true,
     },
     description: {
         type: String,
-        required: true, // La description est requise
+        required: true,
     },
     githubLink: {
         type: String,
-        required: true, // Le lien GitHub est requis
-    },
-    images: {
-        type: Array, // Tableau d'URLs d'images
-        required: true, // Les images sont requises
-    },
-}, { timestamps: true }); // Ajoute les timestamps pour createdAt et updatedAt
+        required: true,
+    }
+}, { timestamps: true });
 
-// Création du modèle Mongoose
 const Project = mongoose.model('Project', projectSchema);
 
-// Exportation du modèle
 module.exports = Project;

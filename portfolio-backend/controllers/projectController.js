@@ -1,17 +1,25 @@
+// controllers/projectController.js
 const Project = require('../models/projectModel');
+
+// Récupérer tous les projets
+exports.getAllProjects = async (req, res) => {
+    try {
+        const projects = await Project.find();
+        res.json(projects);
+    } catch (error) {
+        console.error("Error retrieving projects:", error);
+        res.status(500).json({ message: error.message });
+    }
+};
 
 // Ajouter un nouveau projet
 exports.createProject = async (req, res) => {
     const { title, description, githubLink } = req.body;
 
-    // Obtenez les URLs des images téléchargées
-    const images = req.files.map(file => file.path); // file.path contient l'URL de l'image téléchargée
-
     const project = new Project({
         title,
         description,
-        githubLink,
-        images, // Ajoutez les images à votre modèle
+        githubLink
     });
 
     try {
