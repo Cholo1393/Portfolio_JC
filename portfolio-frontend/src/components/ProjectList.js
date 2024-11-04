@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getProjects, postComment } from '../services/api';
+import { getProjects, postComment, getCommentsByProjectId } from '../services/api'; // Assurez-vous que ces fonctions existent
 
 const ProjectList = () => {
     const [projects, setProjects] = useState([]);
@@ -15,9 +15,11 @@ const ProjectList = () => {
 
                 // Initialiser les commentaires pour chaque projet
                 const initialComments = {};
-                response.data.forEach(project => {
-                    initialComments[project._id] = [];
-                });
+                await Promise.all(response.data.map(async (project) => {
+                    const commentsResponse = await getCommentsByProjectId(project._id);
+                    initialComments[project._id] = commentsResponse.data || [];
+                }));
+
                 setComments(initialComments);
             } catch (error) {
                 console.error("Erreur lors de la récupération des projets:", error);
@@ -29,9 +31,12 @@ const ProjectList = () => {
 
     const handleCommentSubmit = async (projectId) => {
         try {
-            const newComment = await postComment(projectId, { username, text: commentText[projectId] });
-            // Ajouter le nouveau commentaire à l'état
-            setComments(prev => ({ ...prev, [projectId]: [...prev[projectId], newComment.data] }));
+            const newComment = await postComment({ projectId, username, text: commentText[projectId] });
+            // Ajouter le nouveau commentaire à l'état uniquement pour le projet correspondant
+            setComments(prev => ({
+                ...prev,
+                [projectId]: [...prev[projectId], newComment.data]
+            }));
             setCommentText(prev => ({ ...prev, [projectId]: '' })); // Réinitialiser le champ de commentaire
         } catch (error) {
             console.error("Erreur lors de l'ajout du commentaire:", error.response ? error.response.data : error.message);

@@ -1,11 +1,11 @@
-// routes/commentRoutes.js
-
 const express = require('express');
-const { postComment, getComments } = require('../controllers/commentController');
-
+const { getCommentsByProjectId, addComment } = require('../controllers/commentController');
 const router = express.Router();
 
-router.post('/:projectId', postComment);
-router.get('/:projectId', getComments);
+// Route pour récupérer les commentaires par ID de projet
+router.get('/:projectId', getCommentsByProjectId);
+
+// Route pour ajouter un commentaire
+router.post('/', addComment);
 
 module.exports = router;

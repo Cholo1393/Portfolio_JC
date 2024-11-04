@@ -30,8 +30,9 @@ export const postComment = async (projectId, commentData) => {
     return await api.post(`/comments/${projectId}`, commentData);
 };
 
-export const getComments = async (projectId) => {
-    return await api.get(`/comments/${projectId}`);
+export const getCommentsByProjectId = async (projectId) => {
+  const response = await axios.get(`/api/comments/${projectId}`);
+  return response;
 };
 
 export const getProjects = async () => {
