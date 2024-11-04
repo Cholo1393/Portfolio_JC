@@ -1,32 +1,26 @@
+// controllers/commentController.js
 const Comment = require('../models/commentModel');
 
-// Récupérer les commentaires par ID de projet
+// Récupérer tous les commentaires pour un projet donné
 exports.getCommentsByProjectId = async (req, res) => {
     try {
-        const comments = await Comment.find({ projectId: req.params.projectId }).populate('projectId', 'title'); // Optionnel : vous pouvez peupler le titre du projet si nécessaire
+        const comments = await Comment.find({ projectId: req.params.projectId });
         res.status(200).json(comments);
     } catch (error) {
-        console.error('Erreur lors de la récupération des commentaires:', error);
-        res.status(500).json({ message: 'Erreur lors de la récupération des commentaires', error: error.message });
+        res.status(500).json({ message: "Erreur lors de la récupération des commentaires.", error });
     }
 };
 
-// Ajouter un commentaire
-exports.addComment = async (req, res) => {
-    const { projectId, username, text } = req.body;
-
-    // Validation des données entrantes
-    if (!projectId || !username || !text) {
-        return res.status(400).json({ message: 'Tous les champs sont requis.' });
-    }
-
-    const newComment = new Comment({ projectId, username, text });
+// Créer un nouveau commentaire
+exports.createComment = async (req, res) => {
+    const { username, text } = req.body;
+    const projectId = req.params.projectId; // On récupère l'ID du projet depuis les paramètres de la requête
 
     try {
-        const savedComment = await newComment.save();
-        res.status(201).json(savedComment);
+        const newComment = new Comment({ username, text, projectId });
+        await newComment.save();
+        res.status(201).json(newComment);
     } catch (error) {
-        console.error('Erreur lors de l\'ajout du commentaire:', error);
-        res.status(400).json({ message: 'Erreur lors de l\'ajout du commentaire', error: error.message });
+        res.status(400).json({ message: "Erreur lors de l'ajout du commentaire.", error });
     }
 };
