@@ -1,4 +1,3 @@
-// src/components/ProjectList.js
 import React, { useState, useEffect } from 'react';
 import { getProjects, postComment, getCommentsByProjectId } from '../services/api';
 
@@ -63,18 +62,18 @@ const ProjectList = () => {
                             placeholder="Votre nom"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            className="border p-2 rounded mr-2"
+                            className="border p-2 rounded mr-2 text-black" // Ajout de text-black
                         />
                         <input
                             type="text"
                             placeholder="Laissez un commentaire"
                             value={commentText[project._id] || ''}
                             onChange={(e) => setCommentText(prev => ({ ...prev, [project._id]: e.target.value }))}
-                            className="border p-2 rounded mr-2"
+                            className="border p-2 rounded mr-2 text-black" // Ajout de text-black
                         />
                         <button
                             onClick={() => handleCommentSubmit(project._id)}
-                            className="bg-blue-500 text-black rounded p-2"
+                            className="bg-blue-500 text-white rounded p-2"
                         >
                             Commenter
                         </button>
@@ -83,7 +82,7 @@ const ProjectList = () => {
                     {/* Affichage des commentaires */}
                     <div className="mt-2">
                         {comments[project._id] && comments[project._id].map(comment => (
-                            <div key={comment._id} className="border-t border-gray-300 mt-2 pt-2">
+                            <div key={comment._id} className="border-t border-gray-300 mt-2 pt-2 text-black"> {/* Ajout de text-black */}
                                 <strong>{comment.username}</strong>: <span>{comment.text}</span>
                             </div>
                         ))}

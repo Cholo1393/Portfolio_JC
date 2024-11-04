@@ -39,6 +39,14 @@ const Sidebar = () => {
           >
             Contact
           </Link>
+          {/* Lien pour télécharger le CV */}
+          <a
+            href="/JC-CV.pdf" // Lien vers le CV dans le dossier public
+            download
+            className="mt-4 text-lg font-medium text-gray-700 hover:text-blue-500 transition-colors"
+          >
+            Télécharger mon CV
+          </a>
         </nav>
       </div>
     </aside>
