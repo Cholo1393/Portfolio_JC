@@ -26,7 +26,7 @@ const ProjectList = () => {
                     <h2>{project.title}</h2>
                     <p>{project.description}</p>
                     <div className="project-images">
-                        {project.imageUrls.map((url, index) => (
+                        {project.images.map((url, index) => ( // Changer imageUrls en images
                             <img 
                                 key={index} 
                                 src={url} 

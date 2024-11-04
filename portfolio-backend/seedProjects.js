@@ -1,6 +1,5 @@
 // seedProjects.js
 const mongoose = require('mongoose');
-const cloudinary = require('./config/cloudinaryConfig');
 const Project = require('./models/projectModel'); // Assurez-vous que le chemin est correct
 const db = require('./config/db'); // Assurez-vous que le chemin est correct
 
@@ -12,34 +11,24 @@ const projects = [
         title: 'HTML5 Gaming',
         description: 'Un jeu HTML5 captivant.',
         githubLink: 'https://github.com/Cholo1393/HTML5Gaming',
-        imagePath: 'images/HTML5Gaming.png', // chemin local vers l'image
+        image: 'https://res.cloudinary.com/dwdidilop/image/upload/v1730682809/HTML5Gaming_iwrzso.png', // URL de l'image
     },
     {
         title: 'Morpion',
         description: 'Un jeu de morpion classique.',
         githubLink: 'https://github.com/Cholo1393/morpion',
-        imagePath: 'images/Morpion.png',
+        image: 'https://res.cloudinary.com/dwdidilop/image/upload/v1730682810/Morpion_orzanp.png', // URL de l'image
     },
     {
         title: 'App Mobile',
         description: 'Une application mobile innovante.',
         githubLink: 'https://github.com/Cholo1393/AppMobile',
-        imagePath: 'images/My_App.png',
+        image: 'https://res.cloudinary.com/dwdidilop/image/upload/v1730682888/ygtbu2pkatq7syxiqndh.jpg', // URL de l'image
     },
 ];
 
-const uploadImage = async (imagePath) => {
-    const result = await cloudinary.uploader.upload(imagePath);
-    return result.secure_url; // Retourne l'URL de l'image
-};
-
 const seedProjects = async () => {
     try {
-        for (const project of projects) {
-            const imageUrl = await uploadImage(project.imagePath); // Upload l'image sur Cloudinary
-            project.image = imageUrl; // Ajoute l'URL de l'image au projet
-        }
-
         await Project.insertMany(projects); // Insère les projets dans la base de données
         console.log('Projets ajoutés avec succès!');
     } catch (error) {
