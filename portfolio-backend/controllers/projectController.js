@@ -16,10 +16,14 @@ exports.getAllProjects = async (req, res) => {
 exports.createProject = async (req, res) => {
     const { title, description, githubLink } = req.body;
 
+    // Récupérer les URLs des images
+    const imageUrls = req.files.map(file => file.path); // Récupère les chemins des fichiers uploadés
+
     const project = new Project({
         title,
         description,
-        githubLink
+        githubLink,
+        imageUrls, 
     });
 
     try {

@@ -1,4 +1,4 @@
-// models/Project.js
+// models/projectModel.js
 const mongoose = require('mongoose');
 
 const projectSchema = new mongoose.Schema({
@@ -13,7 +13,8 @@ const projectSchema = new mongoose.Schema({
     githubLink: {
         type: String,
         required: true,
-    }
+    },
+    imageUrls: [{ type: String }], 
 }, { timestamps: true });
 
 const Project = mongoose.model('Project', projectSchema);

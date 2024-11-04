@@ -1,3 +1,4 @@
+// src/components/ProjectList.js
 import React, { useState, useEffect } from 'react';
 import { getProjects } from '../services/api';
 
@@ -23,6 +24,11 @@ const ProjectList = () => {
                 <div key={project._id} className="project">
                     <h2>{project.title}</h2>
                     <p>{project.description}</p>
+                    <div className="project-images">
+                        {project.imageUrls.map((url, index) => (
+                            <img key={index} src={url} alt={`${project.title} image ${index + 1}`} className="project-image" />
+                        ))}
+                    </div>
                     <a href={project.githubLink} target="_blank" rel="noopener noreferrer">Voir sur GitHub</a>
                 </div>
             ))}
