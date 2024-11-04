@@ -1,17 +1,13 @@
 /* App.css */
 
-/* Définition de la police Azonix */
 @font-face {
   font-family: 'Azonix';
-  src: url('./fonts/Azonix-Regular.ttf') format('truetype'); /* Assurez-vous que le chemin est correct */
-  font-weight: normal;
-  font-style: normal;
+  src: url('./fonts/Azonix.otf') format('opentype'); /* Chemin relatif vers le fichier de police */
 }
 
-/* Global Styles */
+/* Appliquer la police à votre application */
 body {
-  margin: 0;
-  font-family: 'Azonix', sans-serif; /* Utiliser la police Azonix */
+  font-family: 'Azonix', sans-serif; /* Utiliser la police dans le corps */
   background-color: #ff0000; /* Fond rouge */
   color: #ffffff;
 }
