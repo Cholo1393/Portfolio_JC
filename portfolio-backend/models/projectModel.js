@@ -15,7 +15,7 @@ const projectSchema = new mongoose.Schema({
         required: true, // Le lien GitHub est requis
     },
     images: {
-        type: [String], // Tableau d'URLs d'images
+        type: [Array], // Tableau d'URLs d'images
         required: true, // Les images sont requises
     },
 }, { timestamps: true }); // Ajoute les timestamps pour createdAt et updatedAt
