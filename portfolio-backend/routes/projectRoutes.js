@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const upload = require('../config/multerConfig');
+// const upload = require('../config/multerConfig');
 const { createProject, getAllProjects } = require('../controllers/projectController');
 
 // POST pour ajouter un nouveau projet avec upload d'images
