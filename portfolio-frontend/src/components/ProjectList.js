@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getProjects } from '../services/api';
 import { motion, useMotionValue } from 'framer-motion';
 
+// Configuration pour le carrousel
 const ONE_SECOND = 1000;
 const AUTO_DELAY = ONE_SECOND * 10;
 const DRAG_BUFFER = 50;
@@ -75,7 +76,7 @@ const ProjectList = () => {
                             <motion.div
                                 key={project._id}
                                 style={{
-                                    backgroundImage: `url(${project.image})`, // Assurez-vous que l'URL de l'image est dans le projet
+                                    backgroundImage: `url(${require(`../images/${project.image}`)})`, // Utilisation de require pour charger l'image
                                     backgroundSize: "cover",
                                     backgroundPosition: "center",
                                 }}
@@ -83,7 +84,7 @@ const ProjectList = () => {
                                     scale: imgIndex === idx ? 0.95 : 0.85,
                                 }}
                                 transition={SPRING_OPTIONS}
-                                className="aspect-video w-screen shrink-0 rounded-xl bg-neutral-800 object-cover relative"
+                                className="aspect-video w-full shrink-0 rounded-xl bg-neutral-800 object-cover relative"
                             >
                                 <div className="absolute bottom-0 left-0 p-4 bg-black bg-opacity-50 text-white">
                                     <h2>{project.title}</h2>
