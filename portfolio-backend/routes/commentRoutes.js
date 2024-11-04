@@ -1,10 +1,8 @@
 const express = require('express');
-const { addComment, getComments } = require('../controllers/commentController');
-const authMiddleware = require('../middleware/authMiddleware');
-
 const router = express.Router();
+const commentController = require('../controllers/commentController');
 
-router.post('/', authMiddleware, addComment); // Ajouter un commentaire
-router.get('/:projectId', getComments); // Récupérer les commentaires d'un projet
+router.post('/', commentController.createComment);
+router.get('/:projectId', commentController.getCommentsByProjectId);
 
 module.exports = router;

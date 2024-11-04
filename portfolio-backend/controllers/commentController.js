@@ -1,27 +1,29 @@
 const Comment = require('../models/commentModel');
 
-exports.addComment = async (req, res) => {
+exports.createComment = async (req, res) => {
+    const { projectId, username, text } = req.body;
+
     try {
-        const { projectId, comment } = req.body;
         const newComment = new Comment({
-            userId: req.user._id,
             projectId,
-            comment,
+            username,
+            text,
         });
-        await newComment.save();
-        res.status(201).json({ message: 'Commentaire ajouté avec succès', comment: newComment });
+
+        const savedComment = await newComment.save();
+        res.status(201).json(savedComment);
     } catch (error) {
-        console.error("Erreur lors de l'ajout du commentaire:", error);
-        res.status(500).json({ message: 'Erreur lors de l\'ajout du commentaire' });
+        res.status(500).json({ message: 'Erreur lors de la création du commentaire' });
     }
 };
 
-exports.getComments = async (req, res) => {
+exports.getCommentsByProjectId = async (req, res) => {
+    const { projectId } = req.params;
+
     try {
-        const comments = await Comment.find({ projectId: req.params.projectId }).populate('userId', 'username');
-        res.json(comments);
+        const comments = await Comment.find({ projectId }).populate('projectId');
+        res.status(200).json(comments);
     } catch (error) {
-        console.error("Erreur lors de la récupération des commentaires:", error);
         res.status(500).json({ message: 'Erreur lors de la récupération des commentaires' });
     }
 };
