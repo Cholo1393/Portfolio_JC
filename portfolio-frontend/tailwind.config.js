@@ -25,3 +25,15 @@ module.exports = {
   variants: {},
   plugins: [],
 };
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        customRed: '#FF0000',
+      },
+    },
+  },
+  variants: {},
+  plugins: [],
+};
