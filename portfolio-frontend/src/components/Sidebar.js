@@ -23,7 +23,7 @@ const Sidebar = () => {
       <aside
         className={`fixed top-0 left-0 z-40 h-full w-64 bg-white shadow-lg transition-transform transform ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0`}
+        } lg:translate-x-0 lg:block`}
       >
         <div className="flex flex-col items-center p-4">
           <h1 className="text-2xl font-bold mb-4">MattiDev</h1>
@@ -52,7 +52,7 @@ const Sidebar = () => {
         </div>
       </aside>
 
-      {/* Overlay */}
+      {/* Overlay pour l'écran mobile */}
       {isOpen && (
         <div
           onClick={toggleSidebar}
