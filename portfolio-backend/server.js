@@ -1,7 +1,9 @@
+// server.js
+
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const db = require('./config/db');
+const db = require('./config/db'); // Assurez-vous que votre fichier db.js contient la connexion MongoDB
 const projectRoutes = require('./routes/projectRoutes');
 const commentRoutes = require('./routes/commentRoutes');
 const authRoutes = require('./routes/authRoutes');
@@ -19,14 +21,6 @@ const corsOptions = {
 
 // Middleware pour activer CORS
 app.use(cors(corsOptions));
-
-// Middleware pour ajouter les en-têtes CORS à toutes les réponses
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://mattidev.netlify.app");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-    next();
-});
 
 // Middleware pour traiter le JSON
 app.use(express.json());
