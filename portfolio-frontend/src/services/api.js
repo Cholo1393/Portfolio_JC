@@ -28,9 +28,15 @@ export const postComment = async (projectId, commentData) => {
     return await api.post(`/comments/${projectId}`, commentData);
 };
 
+// Ajoutez la fonction getComments ici
+export const getComments = async () => {
+    return await api.get('/comments'); // Si vous avez un endpoint pour récupérer tous les commentaires
+};
+
+// Modifiez la fonction getCommentsByProjectId pour utiliser api
 export const getCommentsByProjectId = async (projectId) => {
-  const response = await axios.get(`/api/comments/${projectId}`);
-  return response;
+    const response = await api.get(`/comments/${projectId}`);
+    return response;
 };
 
 export const getProjects = async () => {

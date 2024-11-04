@@ -1,5 +1,6 @@
+// src/components/ProjectList.js
 import React, { useState, useEffect } from 'react';
-import { getProjects, postComment, getCommentsByProjectId } from '../services/api'; // Assurez-vous que ces fonctions existent
+import { getProjects, postComment, getCommentsByProjectId } from '../services/api';
 
 const ProjectList = () => {
     const [projects, setProjects] = useState([]);
