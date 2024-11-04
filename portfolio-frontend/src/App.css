@@ -1,9 +1,17 @@
 /* App.css */
 
+/* Définition de la police Azonix */
+@font-face {
+  font-family: 'Azonix';
+  src: url('./fonts/Azonix-Regular.ttf') format('truetype'); /* Assurez-vous que le chemin est correct */
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Global Styles */
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Azonix', sans-serif; /* Utiliser la police Azonix */
   background-color: #ff0000; /* Fond rouge */
   color: #ffffff;
 }
@@ -232,6 +240,7 @@ section {
     display: flex; /* Afficher les liens lorsque le menu est ouvert */
   }
 }
+
 .footer p {
   font-size: 0.875rem;
   color: #ffffff;
