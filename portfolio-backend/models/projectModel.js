@@ -14,7 +14,7 @@ const projectSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    imageUrls: [{ type: String }], 
+    images: [String], 
 }, { timestamps: true });
 
 const Project = mongoose.model('Project', projectSchema);
