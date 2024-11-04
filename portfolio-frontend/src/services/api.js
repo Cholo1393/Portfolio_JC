@@ -2,6 +2,7 @@
 
 import axios from 'axios';
 
+// Création d'une instance Axios avec une URL de base
 const api = axios.create({
     baseURL: 'https://portfolio-backend-jc.fly.dev/api',
 });
@@ -31,16 +32,33 @@ export const postComment = async (projectId, commentData) => {
 };
 
 export const getComments = async (projectId) => {
-    return await api.get(`/comments/${projectId}`);
+    try {
+        const response = await api.get(`/comments/${projectId}`);
+        return response.data; // Assurez-vous de retourner les données directement
+    } catch (error) {
+        console.error("Erreur lors de la récupération des commentaires:", error);
+        throw error; // Relancer l'erreur pour qu'elle soit capturée ailleurs
+    }
 };
 
 export const getProjects = async () => {
-    return await api.get('/projects');
+    try {
+        const response = await api.get('/projects');
+        return response.data; // Retourne les données directement
+    } catch (error) {
+        console.error("Erreur lors de la récupération des projets:", error);
+        throw error; // Relancer l'erreur pour qu'elle soit capturée ailleurs
+    }
 };
 
-// ** Ajoutez la fonction getProject ici **
 export const getProject = async (projectId) => {
-    return await api.get(`/projects/${projectId}`);
+    try {
+        const response = await api.get(`/projects/${projectId}`);
+        return response.data; // Assurez-vous de retourner les données
+    } catch (error) {
+        console.error(`Erreur lors de la récupération du projet ${projectId}:`, error);
+        throw error;
+    }
 };
 
 export const contactForm = async (contactData) => {

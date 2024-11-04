@@ -1,21 +1,32 @@
+// src/components/ProjectList.js
+
 import React, { useState, useEffect } from 'react';
 import { getProjects } from '../services/api';
 
 const ProjectList = () => {
     const [projects, setProjects] = useState([]);
+    const [error, setError] = useState(null); // État pour gérer les erreurs
+    const [loading, setLoading] = useState(true); // État pour gérer le chargement
 
     useEffect(() => {
         const fetchProjects = async () => {
             try {
-                const response = await getProjects();
-                setProjects(response.data);
+                const response = await getProjects(); // Appel à la fonction pour récupérer les projets
+                setProjects(response); // Met à jour l'état avec les projets récupérés
             } catch (error) {
                 console.error("Erreur lors de la récupération des projets:", error);
+                setError("Une erreur est survenue lors de la récupération des projets."); // Met à jour l'état d'erreur
+            } finally {
+                setLoading(false); // Fin de chargement
             }
         };
 
         fetchProjects();
     }, []);
+
+    // Affiche un message de chargement ou une erreur si applicable
+    if (loading) return <p>Chargement des projets...</p>;
+    if (error) return <p>{error}</p>;
 
     return (
         <div className="project-list">
