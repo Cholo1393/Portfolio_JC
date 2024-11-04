@@ -1,5 +1,3 @@
-// src/components/ProjectList.js
-
 import React, { useState, useEffect } from 'react';
 import { getProjects } from '../services/api';
 
@@ -26,7 +24,7 @@ const ProjectList = () => {
                     <h2>{project.title}</h2>
                     <p>{project.description}</p>
                     <div className="project-images">
-                        {project.images.map((url, index) => ( // Changer imageUrls en images
+                        {project.images.map((url, index) => (
                             <img 
                                 key={index} 
                                 src={url} 

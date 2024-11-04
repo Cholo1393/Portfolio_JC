@@ -11,24 +11,25 @@ const projects = [
         title: 'HTML5 Gaming',
         description: 'Un jeu HTML5 captivant.',
         githubLink: 'https://github.com/Cholo1393/HTML5Gaming',
-        image: 'https://res.cloudinary.com/dwdidilop/image/upload/v1730682809/HTML5Gaming_iwrzso.png', // URL de l'image
+        images: ['https://res.cloudinary.com/dwdidilop/image/upload/v1730405056/kmer1ismpgpug3myfats.png'], // URL directe de l'image
     },
     {
         title: 'Morpion',
         description: 'Un jeu de morpion classique.',
         githubLink: 'https://github.com/Cholo1393/morpion',
-        image: 'https://res.cloudinary.com/dwdidilop/image/upload/v1730682810/Morpion_orzanp.png', // URL de l'image
+        images: ['https://res.cloudinary.com/dwdidilop/image/upload/v1730405057/hyjzgekguh0mc57o0xfp.png'], // URL directe de l'image
     },
     {
         title: 'App Mobile',
         description: 'Une application mobile innovante.',
         githubLink: 'https://github.com/Cholo1393/AppMobile',
-        image: 'https://res.cloudinary.com/dwdidilop/image/upload/v1730682888/ygtbu2pkatq7syxiqndh.jpg', // URL de l'image
+        images: ['https://res.cloudinary.com/dwdidilop/image/upload/v1730682888/ygtbu2pkatq7syxiqndh.jpg'], // URL directe de l'image
     },
 ];
 
 const seedProjects = async () => {
     try {
+        await Project.deleteMany({}); // Supprimez les projets existants si nécessaire
         await Project.insertMany(projects); // Insère les projets dans la base de données
         console.log('Projets ajoutés avec succès!');
     } catch (error) {
