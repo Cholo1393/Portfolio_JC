@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getProjects } from '../services/api';
+import { SwipeCarousel } from './SwipeCarousel'; // Importer le SwipeCarousel
 
 const ProjectList = () => {
     const [projects, setProjects] = useState([]);
@@ -19,13 +20,12 @@ const ProjectList = () => {
 
     return (
         <div className="project-list">
-            {projects.map(project => (
-                <div key={project._id} className="project">
-                    <h2>{project.title}</h2>
-                    <p>{project.description}</p>
-                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer">Voir sur GitHub</a>
-                </div>
-            ))}
+            {/* Affichage du carrousel si des projets sont disponibles */}
+            {projects.length > 0 ? (
+                <SwipeCarousel projects={projects} />
+            ) : (
+                <p>Aucun projet disponible.</p>
+            )}
         </div>
     );
 };
