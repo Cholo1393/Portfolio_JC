@@ -34,7 +34,7 @@ const Sidebar = () => {
                 to={section.toLowerCase()}
                 smooth={true}
                 duration={500}
-                className="mb-3 text-lg font-medium text-gray-700 hover:text-blue-500 transition-colors"
+                className="mb-3 text-lg font-medium text-whit hover:text-blue-500 transition-colors"
                 onClick={() => setIsOpen(false)} // Ferme la sidebar après clic
               >
                 {section}
@@ -44,7 +44,7 @@ const Sidebar = () => {
             <a
               href="/JC-CV.pdf"
               download
-              className="mt-4 text-lg font-medium text-gray-700 hover:text-blue-500 transition-colors"
+              className="mt-4 text-lg font-medium text-white hover:text-blue-500 transition-colors"
             >
               Télécharger mon CV
             </a>
