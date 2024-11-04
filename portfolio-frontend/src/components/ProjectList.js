@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getProjects } from '../services/api';
+import { getProjects, postComment } from '../services/api';
 
 const ProjectList = () => {
     const [projects, setProjects] = useState([]);
@@ -28,15 +28,10 @@ const ProjectList = () => {
 
     const handleCommentSubmit = async (projectId) => {
         try {
-            const response = await fetch('/api/comments', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ projectId, username, text: commentText[projectId] }),
-            });
-
-            const newComment = await response.json();
+            // Appel à votre fonction postComment
+            const newComment = await postComment(projectId, { userId: 'userId', text: commentText[projectId] }); // Remplacez 'userId' par l'ID réel de l'utilisateur
             // Ajouter le nouveau commentaire à l'état
-            setComments(prev => ({ ...prev, [projectId]: [...prev[projectId], newComment] }));
+            setComments(prev => ({ ...prev, [projectId]: [...prev[projectId], newComment.data] }));
             setCommentText(prev => ({ ...prev, [projectId]: '' })); // Réinitialiser le champ de commentaire
         } catch (error) {
             console.error("Erreur lors de l'ajout du commentaire:", error);
