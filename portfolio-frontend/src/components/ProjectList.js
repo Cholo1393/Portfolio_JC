@@ -74,7 +74,7 @@ const ProjectList = () => {
                         />
                         <button
                             onClick={() => handleCommentSubmit(project._id)}
-                            className="bg-blue-500 text-white rounded p-2"
+                            className="bg-blue-500 text-black rounded p-2"
                         >
                             Commenter
                         </button>
