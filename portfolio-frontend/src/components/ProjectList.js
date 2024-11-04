@@ -12,6 +12,7 @@ const ProjectList = () => {
             try {
                 const response = await getProjects();
                 setProjects(response.data);
+
                 // Initialiser les commentaires pour chaque projet
                 const initialComments = {};
                 response.data.forEach(project => {
@@ -28,13 +29,12 @@ const ProjectList = () => {
 
     const handleCommentSubmit = async (projectId) => {
         try {
-            // Appel à votre fonction postComment
-            const newComment = await postComment(projectId, { userId: 'userId', text: commentText[projectId] }); // Remplacez 'userId' par l'ID réel de l'utilisateur
+            const newComment = await postComment(projectId, { username, text: commentText[projectId] });
             // Ajouter le nouveau commentaire à l'état
             setComments(prev => ({ ...prev, [projectId]: [...prev[projectId], newComment.data] }));
             setCommentText(prev => ({ ...prev, [projectId]: '' })); // Réinitialiser le champ de commentaire
         } catch (error) {
-            console.error("Erreur lors de l'ajout du commentaire:", error);
+            console.error("Erreur lors de l'ajout du commentaire:", error.response ? error.response.data : error.message);
         }
     };
 
@@ -54,6 +54,7 @@ const ProjectList = () => {
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             className="border p-2 rounded mr-2"
+                            style={{ color: 'black' }} // Met la police en noir
                         />
                         <input
                             type="text"
@@ -61,6 +62,7 @@ const ProjectList = () => {
                             value={commentText[project._id] || ''}
                             onChange={(e) => setCommentText(prev => ({ ...prev, [project._id]: e.target.value }))}
                             className="border p-2 rounded mr-2"
+                            style={{ color: 'black' }} // Met la police en noir
                         />
                         <button
                             onClick={() => handleCommentSubmit(project._id)}
@@ -74,7 +76,7 @@ const ProjectList = () => {
                     <div className="mt-2">
                         {comments[project._id] && comments[project._id].map(comment => (
                             <div key={comment._id} className="border-t border-gray-300 mt-2 pt-2">
-                                <strong>{comment.username}</strong>: {comment.text}
+                                <strong style={{ color: 'black' }}>{comment.username}</strong>: <span style={{ color: 'black' }}>{comment.text}</span>
                             </div>
                         ))}
                     </div>
