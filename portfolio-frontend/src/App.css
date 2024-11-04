@@ -232,3 +232,15 @@ section {
     display: flex; /* Afficher les liens lorsque le menu est ouvert */
   }
 }
+.footer p {
+  font-size: 0.875rem;
+  color: #ffffff;
+}
+
+.footer a {
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #ff5733; /* Couleur personnalisée au survol */
+}
