@@ -1,5 +1,3 @@
-// src/services/api.js
-
 import axios from 'axios';
 
 const api = axios.create({
@@ -30,17 +28,15 @@ export const postComment = async (projectId, commentData) => {
     return await api.post(`/comments/${projectId}`, commentData);
 };
 
-// Correction ici pour utiliser l'instance api
 export const getCommentsByProjectId = async (projectId) => {
-    const response = await api.get(`/comments/${projectId}`); // Utilisation de api ici
-    return response.data; // Renvoie les données directement
+  const response = await axios.get(`/api/comments/${projectId}`);
+  return response;
 };
 
 export const getProjects = async () => {
     return await api.get('/projects');
 };
 
-// Ajoutez la fonction getProject ici
 export const getProject = async (projectId) => {
     return await api.get(`/projects/${projectId}`);
 };
